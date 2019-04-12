@@ -1,16 +1,15 @@
-﻿using cakeslice;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Cell : MonoBehaviour
 {
-    Outline _outline;
     public float Heght { get; private set; }
     public float Width { get; private set; }
     public Vector2 Center { get; private set; }
-
+    Material _material;
     private void OnValidate()
     {
         MeshRenderer mesh = GetComponent<MeshRenderer>();
+        _material = mesh.sharedMaterial;
         Heght = mesh.bounds.size.x;
         Width = mesh.bounds.size.z;
         Center = new Vector2(mesh.bounds.extents.x, mesh.bounds.extents.z);
@@ -19,12 +18,8 @@ public class Cell : MonoBehaviour
 
     private void Awake()
     {
-        _outline = GetComponent<Outline>();
-        if(_outline == null)
-        {
-            Debug.LogError("Outline class is missing!");
-        }
         MeshRenderer mesh = GetComponent<MeshRenderer>();
+        _material = mesh.sharedMaterial;
         Heght = mesh.bounds.size.x;
         Width = mesh.bounds.size.z;
         Center = new Vector2(mesh.bounds.extents.x, mesh.bounds.extents.z);
@@ -36,14 +31,9 @@ public class Cell : MonoBehaviour
         GameController.Instance.SetBorder += SetOutline;
     }
 
-    void SetOutline(int colorIndex)
+    void SetOutline(Vector2 outline)
     {
-        if(colorIndex > 2 || colorIndex < 0)
-        {
-            Debug.LogError("color invex out of range!");
-            return;
-        }
-        _outline.color = colorIndex;
+        _material.SetVector("_borgerSize", outline);
     }
 
 }

@@ -1,10 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
     public System.Action<int> SetBorder;
+    public ASceneManager Manager;
 
     #region Singelton
 
@@ -27,12 +30,24 @@ public class GameController : MonoBehaviour
 
     #endregion
 
-    
-    // Start is called before the first frame update
-    void Start()
-    {
 
+    private void Awake()
+    {
+        DontDestroyOnLoad(this);
     }
+
+    public void StartGame()
+    {
+        SceneManager.LoadSceneAsync("Game");
+        SceneManager.sceneLoaded += InitGameScene;
+    }
+
+    private void InitGameScene(Scene arg0, LoadSceneMode arg1)
+    {
+        Manager.InitScene();
+    }
+
+
 
     // Update is called once per frame
     void Update()

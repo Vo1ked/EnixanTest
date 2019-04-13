@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameSceneManager : ASceneManager
 {
     public GridGenerator GridGenerator;
+    public BorderTerrainGenerator BorderTerrainGenerator;
 
     private void Awake()
     {
@@ -19,6 +20,7 @@ public class GameSceneManager : ASceneManager
     public override void InitScene()
     {
         GridGenerator.Init();
+        BorderTerrainGenerator.Init();
     }
 
 }

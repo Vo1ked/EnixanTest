@@ -6,6 +6,7 @@ public class Cell : MonoBehaviour
     public float Width { get; private set; }
     public Vector2 Center { get; private set; }
     Material _material;
+    LineRenderer _lineRenderer;
     private void OnValidate()
     {
         MeshRenderer mesh = GetComponent<MeshRenderer>();
@@ -19,6 +20,8 @@ public class Cell : MonoBehaviour
     private void Awake()
     {
         MeshRenderer mesh = GetComponent<MeshRenderer>();
+        _lineRenderer = GetComponent<LineRenderer>();
+
         _material = mesh.sharedMaterial;
         Heght = mesh.bounds.size.x;
         Width = mesh.bounds.size.z;
@@ -28,12 +31,12 @@ public class Cell : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameController.Instance.SetBorder += SetOutline;
+        GameController.Instance.SetCellLine += SetOutline;
     }
 
-    void SetOutline(Vector2 outline)
+    void SetOutline(bool isActive)
     {
-        _material.SetVector("_borgerSize", outline);
+        _lineRenderer.enabled = isActive;
     }
 
 }

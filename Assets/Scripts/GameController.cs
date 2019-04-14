@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    public System.Action<Vector2> SetBorder;
+    public System.Action<bool> SetCellLine;
     public ASceneManager Manager;
 
     #region Singelton
@@ -54,11 +54,11 @@ public class GameController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.O))
         {
-            SetBorder?.Invoke(new Vector2(0.95f,0.95f));
+            SetCellLine?.Invoke(true);
         }
         if (Input.GetKeyDown(KeyCode.P))
         {
-            SetBorder?.Invoke(new Vector2(1f, 1f));
+            SetCellLine?.Invoke(false);
         }
     }
 }

@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 762dc9a6b64dbbe42aeb613fa4e650a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: 
-  center: {x: -0.1, y: 0, z: 0}
-  size: {x: 1, y: 0.5, z: 1}
+  Name: RockA
+  center: {x: -0.1, y: 0.1, z: 0}
+  size: {x: 1, y: 0.3, z: 1}
 --- !u!1001 &2461757014391040467
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24,7 +24,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1000014018604958, guid: 5eb9966c8253a3649970e935258ad8d2, type: 3}
       propertyPath: m_Name
-      value: RHEF_RockDetailsA
+      value: RockDetailsA
       objectReference: {fileID: 0}
     - target: {fileID: 4000013735795762, guid: 5eb9966c8253a3649970e935258ad8d2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -72,7 +72,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000013735795762, guid: 5eb9966c8253a3649970e935258ad8d2, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.8
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 4000013735795762, guid: 5eb9966c8253a3649970e935258ad8d2, type: 3}
       propertyPath: m_LocalScale.y
@@ -80,7 +80,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000013735795762, guid: 5eb9966c8253a3649970e935258ad8d2, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.8
+      value: 0.6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5eb9966c8253a3649970e935258ad8d2, type: 3}

@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 762dc9a6b64dbbe42aeb613fa4e650a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: 
-  size: {x: 2, y: 1, z: 2}
+  Name: RockC
   center: {x: 0, y: 0, z: 0}
+  size: {x: 2, y: 1, z: 2}
 --- !u!1001 &2167142234964761762
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24,7 +24,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1000010357584986, guid: ff421997f346e314c82e73610f419ac1, type: 3}
       propertyPath: m_Name
-      value: RHEF_RockMediumC
+      value: RockMediumC
       objectReference: {fileID: 0}
     - target: {fileID: 4000011207167760, guid: ff421997f346e314c82e73610f419ac1, type: 3}
       propertyPath: m_LocalPosition.x

@@ -6,8 +6,9 @@ using System.Linq;
 public class GridGenerator : MonoBehaviour
 {
     [SerializeField] List<Cell> _cellPrefabs;
-    
-    [SerializeField][Tooltip("can be empty")]
+
+    [SerializeField]
+    [Tooltip("can be empty")]
     Transform _cellsContainer;
 
     [SerializeField] float _heght = 1;
@@ -46,14 +47,14 @@ public class GridGenerator : MonoBehaviour
 
     void GenerateGrid()
     {
-        _spawnposition = new Vector2(transform.position.x - _heght, transform.position.z - _width);
+        _spawnposition = new Vector2(transform.position.x - _heght / 2, transform.position.z - _width / 2);
         _heghtLeft = _heght;
         _widthLeft = _width;
         while (_widthLeft > 0)
         {
             GenerateLine();
             _spawnposition += Vector2.up * _cellPrefabs[0].Width;
-            _spawnposition = new Vector2(transform.position.x - _heght, _spawnposition.y);
+            _spawnposition = new Vector2(transform.position.x - _heght / 2, _spawnposition.y);
             _widthLeft -= _cellPrefabs[0].Width;
             _heghtLeft = _heght;
         }
@@ -102,9 +103,9 @@ public class GridGenerator : MonoBehaviour
         {
             return false;
         }
-        Vector3 center = GetSpawnPosition(cell)+ Vector3.up;
+        Vector3 center = GetSpawnPosition(cell) + Vector3.up;
         Vector3 checkbox = new Vector3(cell.Heght / 2 - 0.01f, 0.1f, cell.Width / 2 - 0.01f);
-        if (Physics.BoxCast(center, checkbox,Vector3.down,out RaycastHit hit))
+        if (Physics.BoxCast(center, checkbox, Vector3.down, out RaycastHit hit))
         {
             return false;
         }

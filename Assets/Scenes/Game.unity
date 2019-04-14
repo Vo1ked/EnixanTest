@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.28462148, g: 0.37121013, b: 0.49880773, a: 1}
+  m_IndirectSpecularColor: {r: 0.5649006, g: 0.6356404, b: 0.723939, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -360,14 +360,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534669902}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.85, y: 4.6, z: -11.88}
+  m_LocalRotation: {x: 0.07445662, y: 0, z: 0, w: 0.9972243}
+  m_LocalPosition: {x: 17.3, y: 3.4, z: -19.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 70369469}
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 8.54, y: 0, z: 0}
 --- !u!114 &534669906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -381,11 +381,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distanceFog: 0
-  excludeFarPixels: 1
+  excludeFarPixels: 0
   useRadialDistance: 0
   heightFog: 1
-  height: 1
-  heightDensity: 2
+  height: 200
+  heightDensity: 0.02
   startDistance: 0
   fogShader: {fileID: 4800000, guid: 70d8568987ac0499f952b54c7c13e265, type: 3}
 --- !u!84 &1391398275

@@ -46,18 +46,19 @@ public class BorderTerrainGenerator : MonoBehaviour
     {
         float leftToSpawn = objectsIntensivity;
         float TrySpawnLeft = objectsIntensivity * 3;
-        float BorderHeght = GridSize.x + GridDelay + BorderSize;
-        float BorderWidth = GridSize.y + GridDelay + BorderSize;
+        float BorderHeght = GridSize.x / 2 + GridDelay + BorderSize;
+        float BorderWidth = GridSize.y / 2+ GridDelay + BorderSize;
         while (leftToSpawn > 0 || TrySpawnLeft > 0)
         {
-            Vector2 spawnPosition = new Vector3(Random.Range(transform.position.x - BorderHeght, transform.position.x + BorderHeght),
+            Vector3 spawnPosition = new Vector3(Random.Range(transform.position.x - BorderHeght, transform.position.x + BorderHeght),
                                     transform.position.y,
                                     Random.Range(transform.position.z - BorderWidth, transform.position.z + BorderWidth));
             if (PositionInGrid(spawnPosition)) continue;
             SpawnObject prefab = _terreinPrefabs[Random.Range(0, _terreinPrefabs.Count)];
             if (CanSpawnObject(prefab, spawnPosition))
             {
-                Instantiate(prefab, spawnPosition, Quaternion.identity, _tereinParent);
+                SpawnObject clone = Instantiate(prefab, spawnPosition, Quaternion.identity, _tereinParent);
+                clone.transform.localScale = prefab.transform.localScale;
                 leftToSpawn--;
             }
 
@@ -68,8 +69,11 @@ public class BorderTerrainGenerator : MonoBehaviour
     bool PositionInGrid(Vector3 position)
     {
 
-        return (position.x < transform.position.x + GridSize.x + GridDelay && position.x > transform.position.x - GridSize.x + GridDelay) ||
-                    (position.z < transform.position.z + GridSize.y + GridDelay && position.z > transform.position.z - GridSize.y + GridDelay);
+        Vector2 gridRangeX = new Vector2(transform.position.x - (GridSize.x / 2 + GridDelay), transform.position.x + (GridSize.x / 2 + GridDelay));
+        Vector2 gridRangeZ = new Vector2(transform.position.z - (GridSize.y / 2 + GridDelay), transform.position.z + (GridSize.y / 2 + GridDelay));
+
+        return (position.x > gridRangeX.x && position.x < gridRangeX.y) &&
+                    (position.z > gridRangeZ.x && position.z < gridRangeZ.y);
 
 
     }
@@ -84,7 +88,7 @@ public class BorderTerrainGenerator : MonoBehaviour
             return false;
         }
 
-        if(Physics.BoxCast(spawnPoint,prefab.size,Vector3.down,out RaycastHit hit))
+        if(Physics.BoxCast(spawnPoint + Vector3.up * 50,prefab.size,Vector3.down,out RaycastHit hit))
         {
             return false;
         }

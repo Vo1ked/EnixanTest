@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 762dc9a6b64dbbe42aeb613fa4e650a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: 
+  Name: SpruceB
   center: {x: 0, y: 2, z: 0}
-  size: {x: 1.8, y: 4, z: 1.8}
+  size: {x: 2, y: 4, z: 2}
 --- !u!1001 &7672324145050155553
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -72,15 +72,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000011461705196, guid: 7afaeace60251cd4dae84b0f6e7e8804, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.1
+      value: 0.11
       objectReference: {fileID: 0}
     - target: {fileID: 4000011461705196, guid: 7afaeace60251cd4dae84b0f6e7e8804, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.1
+      value: 0.11
       objectReference: {fileID: 0}
     - target: {fileID: 4000011461705196, guid: 7afaeace60251cd4dae84b0f6e7e8804, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.1
+      value: 0.11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7afaeace60251cd4dae84b0f6e7e8804, type: 3}

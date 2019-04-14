@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 762dc9a6b64dbbe42aeb613fa4e650a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: 
-  size: {x: 3, y: 3, z: 3}
+  Name: RockB
   center: {x: 0, y: 0, z: 0}
+  size: {x: 3, y: 2.15, z: 3}
 --- !u!1001 &8713759837787119008
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24,7 +24,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1000010932500912, guid: 46b49871773764447a894bbb1c459502, type: 3}
       propertyPath: m_Name
-      value: RHEF_RockMediumB
+      value: RockMediumB
       objectReference: {fileID: 0}
     - target: {fileID: 4000010281450330, guid: 46b49871773764447a894bbb1c459502, type: 3}
       propertyPath: m_LocalPosition.x
@@ -72,15 +72,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000010281450330, guid: 46b49871773764447a894bbb1c459502, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 4000010281450330, guid: 46b49871773764447a894bbb1c459502, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.5
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 4000010281450330, guid: 46b49871773764447a894bbb1c459502, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.5
+      value: 0.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46b49871773764447a894bbb1c459502, type: 3}

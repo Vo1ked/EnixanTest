@@ -15,6 +15,7 @@ public class GameSceneManager : ASceneManager
     private void Start()
     {
         GridGenerator.Init();
+        BorderTerrainGenerator.Init();
     }
 
     public override void InitScene()

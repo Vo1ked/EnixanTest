@@ -3,13 +3,21 @@ using UnityEngine.EventSystems;
 
 public class Cell : MonoBehaviour, IPointerClickHandler
 {
+    public static System.Action<Cell> OnCellClick;
     public float heght { get; private set; }
     public float width { get; private set; }
     public Vector2 center { get; private set; }
+    public SpawnObject objectOnCell;
+    public bool placeEmpty {
+        get
+        {
+            return _placementStage && _lineRenderer.enabled;
+        }
+    }
+
     Material _material;
     LineRenderer _lineRenderer;
-    bool colorChanged;
-
+    bool _placementStage;
     private void OnValidate()
     {
         MeshRenderer mesh = GetComponent<MeshRenderer>();
@@ -35,15 +43,37 @@ public class Cell : MonoBehaviour, IPointerClickHandler
     void Start()
     {
         GameController.Instance.setCellLine += SetOutline;
+        GameController.Instance.manager.placeHolder.OnSpawnObject += ShowPlaceMentCell;
+        GameController.Instance.manager.placeHolder.OnObjectPlaced += PlacementStageEnd;
+
     }
 
     void SetOutline(bool isActive)
     {
+        if (_placementStage) return;
         _lineRenderer.enabled = isActive;
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        OnCellClick?.Invoke(this);
         Debug.Log("Clicked");
+    }
+
+    void ShowPlaceMentCell(SpawnObject item)
+    {
+        _placementStage = true;
+        _lineRenderer.enabled = false;
+        if (objectOnCell != null || item.size.x > heght || item.size.z > width) return;
+        _lineRenderer.enabled = true;
+        _lineRenderer.material.color = Color.green;
+
+    }
+
+    void PlacementStageEnd()
+    {
+        _placementStage = false;
+        _lineRenderer.material.color = Color.red;
+        _lineRenderer.enabled = true;
     }
 }

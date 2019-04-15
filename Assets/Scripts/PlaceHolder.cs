@@ -8,6 +8,7 @@ public class PlaceHolder : MonoBehaviour
     SpawnObject _objectToMove;
     public System.Action<SpawnObject> OnSpawnObject;
     public System.Action OnObjectPlaced;
+    int objectCounter = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,15 +30,13 @@ public class PlaceHolder : MonoBehaviour
         {
             _objectToMove.transform.SetParent(cell.transform);
             _objectToMove.transform.localPosition = Vector3.zero;
+            _objectToMove.id = objectCounter;
             cell.objectOnCell = _objectToMove;
-            ObjectIsPlased();
+            objectCounter++;
+            OnObjectPlaced?.Invoke();
+            Cell.OnCellClick -= SetObject;
+            _objectToMove = null;
         }
     }
 
-    public void ObjectIsPlased()
-    {
-        OnObjectPlaced?.Invoke();
-        Cell.OnCellClick -= SetObject;
-
-    }
 }

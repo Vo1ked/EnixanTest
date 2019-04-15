@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpawnObject : MonoBehaviour
 {
     public new string name;
+    public int id = -1;
     public Vector3 center;
     public Vector3 size;
 

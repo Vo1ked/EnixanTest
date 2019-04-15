@@ -56,8 +56,11 @@ public class Cell : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        if (!_placementStage)
+        {
+            ShowCellInfo();
+        }
         OnCellClick?.Invoke(this);
-        Debug.Log("Clicked");
     }
 
     void ShowPlaceMentCell(SpawnObject item)
@@ -75,5 +78,14 @@ public class Cell : MonoBehaviour, IPointerClickHandler
         _placementStage = false;
         _lineRenderer.material.color = Color.red;
         _lineRenderer.enabled = true;
+    }
+
+    void ShowCellInfo()
+    {
+        Debug.LogFormat("Cell position = {0}\nCell Size = {1} x {2}",transform.localPosition,heght,width);
+        if(objectOnCell != null)
+        {
+            Debug.LogFormat("Object info:\nname = {0}\nobject Id = {1}\nobject size = {2}",objectOnCell.name,objectOnCell.id,objectOnCell.size);
+        }
     }
 }

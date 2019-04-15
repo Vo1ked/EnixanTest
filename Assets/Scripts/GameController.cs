@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour
 {
     public System.Action<bool> setCellLine;
     public ASceneManager manager;
+    bool _gridEnabled = true;
 
     #region Singelton
 
@@ -36,29 +37,23 @@ public class GameController : MonoBehaviour
         DontDestroyOnLoad(this);
     }
 
-    public void StartGame()
+    public void Start()
     {
-        SceneManager.LoadSceneAsync("Game");
-        SceneManager.sceneLoaded += InitGameScene;
+        InitGameScene();
     }
 
-    private void InitGameScene(Scene arg0, LoadSceneMode arg1)
+    private void InitGameScene()
     {
         manager.InitScene();
+        GameSceneManager gameManager = (GameSceneManager)manager;
+        gameManager.UiManager.gridButton.onClick.AddListener(SwicthGrid);
+
     }
 
-
-
-    // Update is called once per frame
-    void Update()
+    void SwicthGrid()
     {
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            setCellLine?.Invoke(true);
-        }
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            setCellLine?.Invoke(false);
-        }
+        _gridEnabled = !_gridEnabled;
+        setCellLine?.Invoke(_gridEnabled);
     }
+
 }

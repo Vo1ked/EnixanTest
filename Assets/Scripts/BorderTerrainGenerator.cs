@@ -6,10 +6,10 @@ public class BorderTerrainGenerator : MonoBehaviour
 {
     [SerializeField] List<SpawnObject> _terreinPrefabs;
     [SerializeField] Transform _tereinParent;
-    [SerializeField] Vector2 GridSize;
-    [SerializeField] float GridDelay;
-    [SerializeField] float BorderSize;
-    [SerializeField] float objectsIntensivity;
+    public Vector2 gridSize;
+    [SerializeField] float _gridDelay;
+    [SerializeField] float _borderSize;
+    [SerializeField] float _objectsIntensivity;
 
     public void Init()
     {
@@ -24,17 +24,17 @@ public class BorderTerrainGenerator : MonoBehaviour
             Debug.LogError("prefabs list null or empty!");
             return false;
         }
-        if (GridSize.x < 0 || GridSize.y < 0)
+        if (gridSize.x < 0 || gridSize.y < 0)
         {
             Debug.LogError("Grid size must contain only positive value!");
             return false;
         }
-        if (GridDelay < 0)
+        if (_gridDelay < 0)
         {
             Debug.LogError("GridDelay must contain only positive value!");
             return false;
         }
-        if (BorderSize < 0)
+        if (_borderSize < 0)
         {
             Debug.LogError("BorderSize must contain only positive value!");
             return false;
@@ -44,10 +44,10 @@ public class BorderTerrainGenerator : MonoBehaviour
 
     void SpawnBorder()
     {
-        float leftToSpawn = objectsIntensivity;
-        float TrySpawnLeft = objectsIntensivity * 3;
-        float BorderHeght = GridSize.x / 2 + GridDelay + BorderSize;
-        float BorderWidth = GridSize.y / 2+ GridDelay + BorderSize;
+        float leftToSpawn = _objectsIntensivity;
+        float TrySpawnLeft = _objectsIntensivity * 3;
+        float BorderHeght = gridSize.x / 2 + _gridDelay + _borderSize;
+        float BorderWidth = gridSize.y / 2+ _gridDelay + _borderSize;
         while (leftToSpawn > 0 || TrySpawnLeft > 0)
         {
             Vector3 spawnPosition = new Vector3(Random.Range(transform.position.x - BorderHeght, transform.position.x + BorderHeght),
@@ -69,8 +69,8 @@ public class BorderTerrainGenerator : MonoBehaviour
     bool PositionInGrid(Vector3 position)
     {
 
-        Vector2 gridRangeX = new Vector2(transform.position.x - (GridSize.x / 2 + GridDelay), transform.position.x + (GridSize.x / 2 + GridDelay));
-        Vector2 gridRangeZ = new Vector2(transform.position.z - (GridSize.y / 2 + GridDelay), transform.position.z + (GridSize.y / 2 + GridDelay));
+        Vector2 gridRangeX = new Vector2(transform.position.x - (gridSize.x / 2 + _gridDelay), transform.position.x + (gridSize.x / 2 + _gridDelay));
+        Vector2 gridRangeZ = new Vector2(transform.position.z - (gridSize.y / 2 + _gridDelay), transform.position.z + (gridSize.y / 2 + _gridDelay));
 
         return (position.x > gridRangeX.x && position.x < gridRangeX.y) &&
                     (position.z > gridRangeZ.x && position.z < gridRangeZ.y);

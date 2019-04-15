@@ -11,8 +11,8 @@ public class GridGenerator : MonoBehaviour
     [Tooltip("can be empty")]
     Transform _cellsContainer;
 
-    [SerializeField] float _heght = 1;
-    [SerializeField] float _width = 1;
+    public float heght = 1;
+    public float width = 1;
     float _heghtLeft;
     float _widthLeft;
     Vector2 _spawnposition;
@@ -32,12 +32,12 @@ public class GridGenerator : MonoBehaviour
             Debug.LogError("cell Prefabs is null or empty!");
             return false;
         }
-        if (!_cellPrefabs.Any(x => x.Heght < _heght))
+        if (!_cellPrefabs.Any(x => x.heght < heght))
         {
             Debug.LogError("Heght too low for selected prefabs!");
             return false;
         }
-        if (!_cellPrefabs.Any(x => x.Width < _width))
+        if (!_cellPrefabs.Any(x => x.width < width))
         {
             Debug.LogError("Width too low for selected prefabs!");
             return false;
@@ -47,16 +47,16 @@ public class GridGenerator : MonoBehaviour
 
     void GenerateGrid()
     {
-        _spawnposition = new Vector2(transform.position.x - _heght / 2, transform.position.z - _width / 2);
-        _heghtLeft = _heght;
-        _widthLeft = _width;
+        _spawnposition = new Vector2(transform.position.x - heght / 2, transform.position.z - width / 2);
+        _heghtLeft = heght;
+        _widthLeft = width;
         while (_widthLeft > 0)
         {
             GenerateLine();
-            _spawnposition += Vector2.up * _cellPrefabs[0].Width;
-            _spawnposition = new Vector2(transform.position.x - _heght / 2, _spawnposition.y);
-            _widthLeft -= _cellPrefabs[0].Width;
-            _heghtLeft = _heght;
+            _spawnposition += Vector2.up * _cellPrefabs[0].width;
+            _spawnposition = new Vector2(transform.position.x - heght / 2, _spawnposition.y);
+            _widthLeft -= _cellPrefabs[0].width;
+            _heghtLeft = heght;
         }
 
     }
@@ -75,13 +75,13 @@ public class GridGenerator : MonoBehaviour
                 }
                 cell = CreateRandomCell(out index, index);
             }
-            if (_heghtLeft - cell.Heght < 0) return;
+            if (_heghtLeft - cell.heght < 0) return;
             if (ValidateCell(cell))
             {
                 Instantiate(cell.gameObject, GetSpawnPosition(cell), Quaternion.identity, _cellsContainer);
             }
-            _heghtLeft -= cell.Heght;
-            _spawnposition += Vector2.right * cell.Heght;
+            _heghtLeft -= cell.heght;
+            _spawnposition += Vector2.right * cell.heght;
         }
     }
 
@@ -99,12 +99,12 @@ public class GridGenerator : MonoBehaviour
 
     bool ValidateCell(Cell cell)
     {
-        if (cell.Heght > _heghtLeft || cell.Width > _widthLeft) // border check
+        if (cell.heght > _heghtLeft || cell.width > _widthLeft) // border check
         {
             return false;
         }
         Vector3 center = GetSpawnPosition(cell) + Vector3.up;
-        Vector3 checkbox = new Vector3(cell.Heght / 2 - 0.01f, 0.1f, cell.Width / 2 - 0.01f);
+        Vector3 checkbox = new Vector3(cell.heght / 2 - 0.01f, 0.1f, cell.width / 2 - 0.01f);
         if (Physics.BoxCast(center, checkbox, Vector3.down, out RaycastHit hit))
         {
             return false;
@@ -118,7 +118,7 @@ public class GridGenerator : MonoBehaviour
     /// <returns></returns>
     Vector3 GetSpawnPosition(Cell cell)
     {
-        Vector3 center = new Vector3(_spawnposition.x + cell.Center.x, transform.position.y, _spawnposition.y + cell.Center.y);
+        Vector3 center = new Vector3(_spawnposition.x + cell.center.x, transform.position.y, _spawnposition.y + cell.center.y);
         return center;
 
     }
@@ -128,8 +128,8 @@ public class PerimeterSort : IComparer<Cell>
 {
     public int Compare(Cell x, Cell y)
     {
-        float xPerimeter = x.Width * 2 + x.Heght * 2;
-        float yPerimeter = y.Width * 2 + y.Heght * 2;
+        float xPerimeter = x.width * 2 + x.heght * 2;
+        float yPerimeter = y.width * 2 + y.heght * 2;
 
         if (xPerimeter > yPerimeter) return 1;
         if (xPerimeter < yPerimeter) return -1;

@@ -4,24 +4,25 @@ using UnityEngine;
 
 public class GameSceneManager : ASceneManager
 {
-    public GridGenerator GridGenerator;
-    public BorderTerrainGenerator BorderTerrainGenerator;
+    public GridGenerator gridGenerator;
+    public BorderTerrainGenerator borderTerrainGenerator;
 
     private void Awake()
     {
-        GameController.Instance.Manager = this;
+        GameController.Instance.manager = this;
     }
 
     private void Start()
     {
-        GridGenerator.Init();
-        BorderTerrainGenerator.Init();
+        gridGenerator.Init();
+        borderTerrainGenerator.gridSize = new Vector2(gridGenerator.heght, gridGenerator.width);
+        borderTerrainGenerator.Init();
     }
 
     public override void InitScene()
     {
-        GridGenerator.Init();
-        BorderTerrainGenerator.Init();
+        gridGenerator.Init();
+        borderTerrainGenerator.Init();
     }
 
 }

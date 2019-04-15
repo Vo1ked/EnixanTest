@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpawnObject : MonoBehaviour
 {
-    public string Name;
+    public new string name;
     public Vector3 center;
     public Vector3 size;
 

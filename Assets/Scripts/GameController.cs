@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    public System.Action<bool> SetCellLine;
-    public ASceneManager Manager;
+    public System.Action<bool> setCellLine;
+    public ASceneManager manager;
 
     #region Singelton
 
@@ -44,7 +44,7 @@ public class GameController : MonoBehaviour
 
     private void InitGameScene(Scene arg0, LoadSceneMode arg1)
     {
-        Manager.InitScene();
+        manager.InitScene();
     }
 
 
@@ -54,11 +54,11 @@ public class GameController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.O))
         {
-            SetCellLine?.Invoke(true);
+            setCellLine?.Invoke(true);
         }
         if (Input.GetKeyDown(KeyCode.P))
         {
-            SetCellLine?.Invoke(false);
+            setCellLine?.Invoke(false);
         }
     }
 }

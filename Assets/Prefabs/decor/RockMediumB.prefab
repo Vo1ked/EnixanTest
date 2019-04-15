@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 762dc9a6b64dbbe42aeb613fa4e650a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: RockB
+  name: RockB
   center: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 2.15, z: 3}
 --- !u!1001 &8713759837787119008

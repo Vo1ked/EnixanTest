@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CameraController : MonoBehaviour
 {
@@ -43,7 +44,7 @@ public class CameraController : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             _presstime += Time.deltaTime;
-            if (_presstime > 0.15f && _pointerPosition != Input.mousePosition)
+            if (_presstime > 0.15f && _pointerPosition != Input.mousePosition )
             {
                 Vector3 direction = Input.mousePosition - _pointerPosition;
                 direction.Normalize();

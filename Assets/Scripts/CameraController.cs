@@ -6,11 +6,11 @@ using UnityEngine.UI;
 public class CameraController : MonoBehaviour
 {
 
-    [SerializeField] float sensity = 1f;
+    [SerializeField] float sensitivity = 1f;
     [SerializeField] Vector2 borderCenter = new Vector2(0, 0);
     [SerializeField] Vector2 cameraBorder = new Vector2(1, 1);
     [Space]
-    [SerializeField] float zoomSensity = 1f;
+    [SerializeField] float zoomSensitivity = 1f;
     [SerializeField] Vector2 zoom = new Vector2(1, 5);
     [SerializeField] Vector2 angle = new Vector2(25, 60);
     float _currentZoomPosition;
@@ -48,10 +48,10 @@ public class CameraController : MonoBehaviour
             {
                 Vector3 direction = Input.mousePosition - _pointerPosition;
                 direction.Normalize();
-                Vector3 nextPosition = transform.position + new Vector3(direction.x, 0, direction.y) * sensity;
+                Vector3 nextPosition = transform.position + new Vector3(direction.x, 0, direction.y) * sensitivity;
                 if (PositionInBorder(nextPosition))
                 {
-                    transform.Translate(new Vector3(direction.x, 0, direction.y) * sensity, Space.World);
+                    transform.Translate(new Vector3(direction.x, 0, direction.y) * sensitivity, Space.World);
                 }
             }
         }
@@ -66,7 +66,7 @@ public class CameraController : MonoBehaviour
     {
         if (_scrollPosition != Input.mouseScrollDelta)
         {
-            _currentZoomPosition = Mathf.Clamp(_currentZoomPosition + Input.mouseScrollDelta.y * zoomSensity, -1, 1);
+            _currentZoomPosition = Mathf.Clamp(_currentZoomPosition + Input.mouseScrollDelta.y * zoomSensitivity, -1, 1);
             transform.position = new Vector3(transform.position.x, Mathf.Lerp(zoom.x, zoom.y, _currentZoomPosition),transform.position.z);
             transform.eulerAngles = new Vector3( Mathf.Lerp(angle.x, angle.y, _currentZoomPosition), transform.eulerAngles.y, transform.eulerAngles.z);
         }

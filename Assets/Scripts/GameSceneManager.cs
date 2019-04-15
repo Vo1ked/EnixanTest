@@ -2,12 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameSceneManager : ASceneManager
+public class GameSceneManager : MonoBehaviour
 {
     public new string name = "GameSceneManager";
-    public GridGenerator gridGenerator;
-    public BorderTerrainGenerator borderTerrainGenerator;
-    public UiManager UiManager;
+    [SerializeField] GridGenerator _gridGenerator;
+    public GridGenerator gridGenerator { get => _gridGenerator; }
+
+    [SerializeField] BorderTerrainGenerator _borderTerrainGenerator;
+    public BorderTerrainGenerator borderTerrainGenerator { get => _borderTerrainGenerator; }
+
+    [SerializeField] PlaceHolder _placeHolder;
+    public PlaceHolder placeHolder { get => _placeHolder; }
+
+    [SerializeField]  UiManager _uiManager;
+    public UiManager uiManager { get => _uiManager; }
 
     private void Awake()
     {
@@ -15,11 +23,11 @@ public class GameSceneManager : ASceneManager
     }
 
 
-    public override void InitScene()
+    public void InitScene()
     {
-        gridGenerator.Init();
-        borderTerrainGenerator.gridSize = new Vector2(gridGenerator.heght, gridGenerator.width);
-        borderTerrainGenerator.Init();
+        _gridGenerator.Init();
+        _borderTerrainGenerator.gridSize = _placeHolder.gridSize = new Vector2(_gridGenerator.heght, _gridGenerator.width);
+        _borderTerrainGenerator.Init();
     }
 
 }

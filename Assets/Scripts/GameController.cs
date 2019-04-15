@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {
     public System.Action<bool> setCellLine;
-    public ASceneManager manager;
+    public GameSceneManager manager;
     bool _gridEnabled = true;
 
     #region Singelton
@@ -45,8 +45,7 @@ public class GameController : MonoBehaviour
     private void InitGameScene()
     {
         manager.InitScene();
-        GameSceneManager gameManager = (GameSceneManager)manager;
-        gameManager.UiManager.gridButton.onClick.AddListener(SwicthGrid);
+        manager.uiManager.gridButton.onClick.AddListener(SwicthGrid);
 
     }
 

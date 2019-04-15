@@ -23,7 +23,8 @@ public class CameraController : MonoBehaviour
     private void Awake()
     {
         _currentZoomPosition = transform.position.y / zoom.y;
-        Mathf.Lerp(angle.x, angle.y, _currentZoomPosition);
+        transform.position = new Vector3(transform.position.x, Mathf.Lerp(zoom.x, zoom.y, _currentZoomPosition), transform.position.z);
+        transform.eulerAngles = new Vector3(Mathf.Lerp(angle.x, angle.y, _currentZoomPosition), transform.eulerAngles.y, transform.eulerAngles.z);
     }
 
     // Start is called before the first frame update

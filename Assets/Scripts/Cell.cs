@@ -1,13 +1,15 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Cell : MonoBehaviour,IPointerClickHandler
+public class Cell : MonoBehaviour, IPointerClickHandler
 {
     public float heght { get; private set; }
     public float width { get; private set; }
     public Vector2 center { get; private set; }
     Material _material;
     LineRenderer _lineRenderer;
+    bool colorChanged;
+
     private void OnValidate()
     {
         MeshRenderer mesh = GetComponent<MeshRenderer>();

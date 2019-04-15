@@ -12,7 +12,8 @@ public class ShopItem : MonoBehaviour,IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        throw new System.NotImplementedException();
+        GameController.Instance.manager.placeHolder.SpawnItem(item);
+        GameController.Instance.manager.uiManager.SetShopWindow();
     }
 
     void Start()
